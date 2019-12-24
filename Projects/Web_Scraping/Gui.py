@@ -5,8 +5,8 @@ import os
 root = tk.Tk()
 apps = []
 
-if os.path.isfile('save.txt'):
-    with open('save.txt', 'r') as f:
+if os.path.isfile("save.txt"):
+    with open("save.txt", "r") as f:
         tempapps = f.read()
         tempapps = tempapps.split()
         apps = [x for x in tempapps if x.strip()]
@@ -16,37 +16,46 @@ def addApp():
     for widget in frame.winfo_children():
         widget.destroy()
 
-    filename = filedialog.askopenfilename(initialdir='/', title = 'Select File',
-    filetypes = (('executables', '*.exe'), ('all files', '*.*')))
+    filename = filedialog.askopenfilename(
+        initialdir="/",
+        title="Select File",
+        filetypes=(("executables", "*.exe"), ("all files", "*.*")),
+    )
     apps.append(filename)
     print(filename)
     for app in apps:
-        label = tk.Label(frame, text=app, bg='gray')
+        label = tk.Label(frame, text=app, bg="gray")
         label.pack()
+
 
 def runApps():
     for app in apps:
         os.startfile(app)
 
-canvas = tk.Canvas(root, height=500, width = 600, bg='#263D42')
+
+canvas = tk.Canvas(root, height=500, width=600, bg="#263D42")
 canvas.pack()
 
-frame = tk.Frame(root, bg ='white')
-frame.place(relheight = 0.8, relwidth = 0.8, relx = 0.1, rely=0.1)
+frame = tk.Frame(root, bg="white")
+frame.place(relheight=0.8, relwidth=0.8, relx=0.1, rely=0.1)
 
-openfile = tk.Button(root, text = 'Open File', padx = 10, pady=5, fg='white', bg='#263D42', command = addApp)
+openfile = tk.Button(
+    root, text="Open File", padx=10, pady=5, fg="white", bg="#263D42", command=addApp
+)
 openfile.pack()
 
-runapps = tk.Button(root, text = 'Run Apps', padx = 10, pady=5, fg='red', bg='#263D42', command = runApps)
+runapps = tk.Button(
+    root, text="Run Apps", padx=10, pady=5, fg="red", bg="#263D42", command=runApps
+)
 runapps.pack()
 
 for app in apps:
-    label = tk.Label(frame, text= app)
+    label = tk.Label(frame, text=app)
     label.pack()
 
 root.mainloop()
 
-with open('save.txt', 'w') as f:
+with open("save.txt", "w") as f:
     for app in apps:
-        f.write(app + ',')
+        f.write(app + ",")
 
