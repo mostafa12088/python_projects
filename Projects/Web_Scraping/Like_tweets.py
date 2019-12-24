@@ -46,6 +46,6 @@ class TwitterBot:
                     time.sleep(10)
 
 
-mb = TwitterBot("***********@gmail.com", "*****")
+mb = TwitterBot("xyzxyz@gmail.com", "xxxxxxxxxx")
 mb.login()
 mb.like_tweets("webdeveloper")
