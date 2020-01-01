@@ -2,8 +2,7 @@ import imageio
 import os
 
 video_file = os.path.abspath(r"C:\\Users\\BME7ABT\\Desktop\\SampleVideo.mp4")
-
-print(video_file)
+# print(video_file)
 
 
 def gifMaker(inputPath, targetFormate):
